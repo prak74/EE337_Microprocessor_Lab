@@ -1,0 +1,41 @@
+A51 MACRO ASSEMBLER  SET_BIT_COUNTER                                                      01/25/2021 14:27:23 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\set_bit_counter.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE set_bit_counter.asm SET(SMALL) DEBUG PRINT(.\Listings\set_bit_counter.lst) OBJE
+                      CT(.\Objects\set_bit_counter.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 7570AA            1     mov 70H, #0AAH                                  ; Assign value to 70H
+0003 E570              2     mov A, 70H                                              ; Move 70h to A
+0005 7808              3     mov R0,#08H                                             ; Initialize R0 to 8 (since 8 bits 
+                             => 8 steps)
+0007 20E005            4     check : jb ACC.0,increment              ; If ACC.0 set, move to increment
+000A 03                5     loop : rr A                                             ; right rotate to get next bit at A
+                             CC.0
+000B D8FA              6     djnz R0,check                                   ; repeat check and loop till R0 = 0
+000D 80FE              7     here : sjmp here                                ; Last line to be executed
+000F 0571              8     increment : inc 71H                             ; If ACC.0, inc 71H
+0011 80F7              9     sjmp loop                                               ; Go back to loop
+                      10     end                                                             ; EOF
+A51 MACRO ASSEMBLER  SET_BIT_COUNTER                                                      01/25/2021 14:27:23 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+CHECK. . . . . . .  C ADDR   0007H   A   
+HERE . . . . . . .  C ADDR   000DH   A   
+INCREMENT. . . . .  C ADDR   000FH   A   
+LOOP . . . . . . .  C ADDR   000AH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

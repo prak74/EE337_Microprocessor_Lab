@@ -1,0 +1,115 @@
+A51 MACRO ASSEMBLER  2LEDS                                                                02/08/2021 15:31:16 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\2leds.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE 2leds.asm SET(SMALL) DEBUG PRINT(.\Listings\2leds.lst) OBJECT(.\Objects\2leds.o
+                      bj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000
+0000 020100            2     ljmp main
+                       3     
+0100                   4     org 100H
+0100                   5             main:
+0100 759003            6             mov P1, #003H                                                   ; Initialization fo
+                             r taking inputs
+0103                   7             start:
+0103 A290              8                     mov C, P1.0
+0105 8291              9                     anl C, P1.1
+0107 4030             10                     jc both_set                                                             ; B
+                             oth are set so move to corresponding loop
+0109 209005           11                     jb P1.0, pin_4                                                  ; Only togg
+                             le pin 4
+010C 209115           12                     jb P1.1, pin_6                                                  ; Only togg
+                             le pin 6
+010F 80F2             13                     sjmp start                                                              ; e
+                             nd
+                      14     
+                      15     
+0111                  16     pin_4:
+0111 C296             17             clr P1.6                                                        ; incase P1.6 is 1 
+                             at transition, clear it 
+0113 D294             18             setb P1.4
+0115 120150           19             lcall delay_1s                                          ; wait 1s
+                      20     
+0118 C294             21             clr P1.4
+011A 7803             22             mov R0,#3
+011C                  23             repeat3:
+011C 120150           24                     lcall delay_1s
+011F D8FB             25                     djnz R0, repeat3                                ; wait 3*1s
+0121 020103           26             ljmp start
+                      27     
+                      28     
+0124                  29     pin_6:
+0124 C294             30             clr P1.4                                                        ; incase P1.4 is 1 
+                             at transition, clear it
+0126 D296             31             setb P1.6
+0128 120150           32             lcall delay_1s
+012B 120150           33             lcall delay_1s
+012E C296             34             clr P1.6
+0130 120150           35             lcall delay_1s
+0133 120150           36             lcall delay_1s
+0136 020103           37             ljmp start                                                      ; recheck input    
+                                                                  
+                      38     
+                      39     
+0139                  40     both_set:
+0139 D294             41             setb P1.4
+013B D296             42             setb P1.6
+                      43     
+013D 120150           44             lcall delay_1s                                          ; wait 1s
+0140 C294             45             clr P1.4
+0142 120150           46             lcall delay_1s                                          ; wait 1s
+0145 C296             47             clr P1.6
+0147 120150           48             lcall delay_1s
+014A 120150           49             lcall delay_1s                                          ; wait 2s
+A51 MACRO ASSEMBLER  2LEDS                                                                02/08/2021 15:31:16 PAGE     2
+
+014D 020103           50             ljmp start                                                      ; recheck input
+                      51     
+                      52     
+0150                  53     delay_1s:
+0150 7908             54             mov R1,#8                                                       ; 8 * 125 ms = 1s
+0152                  55             loop4:
+0152 7AFA             56                     mov R2,#250
+0154                  57                     loop3:
+0154 7BF9             58                             mov R3,#249                                     ; initially both we
+                             re taken 250, later fine-tuned by trial and error
+0156 7CF9             59                             mov R4,#249
+0158 DBFE             60                             loop1:djnz R3, loop1            ; 249*2 cycles
+015A DCFE             61                             loop2:djnz R4, loop2            ; 249*2 cycles (2 cycles added thru
+                              djnz)
+                      62                             ; 1000 cycles per loop of R2
+015C DAF6             63                             djnz R2,loop3                           ; 250*(996) cycles ~ 125 ms
+015E D9F2             64                     djnz R1,loop4                                   ; 8 * (250*(996)+2) cycles 
+                             ~ 1s
+0160 22               65             ret
+                      66     end
+A51 MACRO ASSEMBLER  2LEDS                                                                02/08/2021 15:31:16 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BOTH_SET . . . . .  C ADDR   0139H   A   
+DELAY_1S . . . . .  C ADDR   0150H   A   
+LOOP1. . . . . . .  C ADDR   0158H   A   
+LOOP2. . . . . . .  C ADDR   015AH   A   
+LOOP3. . . . . . .  C ADDR   0154H   A   
+LOOP4. . . . . . .  C ADDR   0152H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+PIN_4. . . . . . .  C ADDR   0111H   A   
+PIN_6. . . . . . .  C ADDR   0124H   A   
+REPEAT3. . . . . .  C ADDR   011CH   A   
+START. . . . . . .  C ADDR   0103H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

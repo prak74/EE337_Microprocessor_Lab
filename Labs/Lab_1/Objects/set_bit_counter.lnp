@@ -1,0 +1,3 @@
+".\Objects\set_bit_counter.obj" 
+TO ".\Objects\set_bit_counter" 
+PRINT(".\Listings\set_bit_counter.m51") RAMSIZE(256) 

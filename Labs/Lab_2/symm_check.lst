@@ -1,0 +1,107 @@
+A51 MACRO ASSEMBLER  SYMM_CHECK                                                           02/01/2021 14:24:22 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\symm_check.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE symm_check.asm SET(SMALL) DEBUG PRINT(.\Listings\symm_check.lst) OBJECT(.\Objec
+                      ts\symm_check.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ; Inputs 
+0000 756004            2     mov 60H, #004H
+0003 756187            3     mov 61H, #087H
+0006 756285            4     mov 62H, #085H
+0009 756387            5     mov 63H, #087H
+000C 756487            6     mov 64H, #087H
+000F 756585            7     mov 65H, #085H
+0012 756687            8     mov 66H, #087H
+0015 756787            9     mov 67H, #087H
+0018 756887           10     mov 68H, #087H
+001B 756980           11     mov 69H, #080H
+001E 756A87           12     mov 6AH, #087H
+0021 756B87           13     mov 6BH, #087H
+0024 756C87           14     mov 6CH, #087H
+0027 756D87           15     mov 6DH, #087H
+002A 756E87           16     mov 6EH, #087H
+002D 756F87           17     mov 6FH, #087H
+                      18     
+                      19     ; Initializations
+0030 7E01             20     mov R6, #001H                   ; outer_loop variable
+                      21     
+0032 D2D5             22     setb PSW.5                              ; Initially set the flag, and unset it if any check
+                              goes wrong
+                      23     
+0034                  24     outer_loop: 
+0034 EE               25             mov A, R6
+0035 FB               26             mov R3, A                       ; Initialize value of R7
+0036 FC               27             mov R4, A
+0037 1C               28             dec R4                          ; Initialize R4 to R6-1
+0038 EC               29             mov A, R4
+0039 8560F0           30             mov B, 060H
+003C A4               31             mul AB
+003D FA               32             mov R2, A                       ; Initialize R2 to R4*(60H)
+003E                  33             inner_loop:
+                      34                     ; R3 will act both as the column number for upper triangular as well as the
+                              loop variable
+003E EB               35                     mov A, R3
+003F 8560F0           36                     mov B, 060H
+0042 A4               37                     mul AB
+0043 FD               38                     mov R5, A               ; R5 = (60H) * R3 
+                      39                     
+0044 7461             40                     mov A, #061H
+0046 2A               41                     add A, R2
+0047 2B               42                     add A, R3
+0048 F8               43                     mov R0, A               
+0049 8640             44                     mov 40H, @R0    ; Move number from upper triangle to 40H
+                      45                     
+004B 7461             46                     mov A, #061H
+004D 2C               47                     add A, R4
+004E 2D               48                     add A, R5
+004F F8               49                     mov R0, A               
+0050 E6               50                     mov A, @R0              ; Move number from lower triangle to A
+                      51                     
+0051 B54011           52                     cjne A, 40H, break      ; if not equal, then break loop
+                      53                     
+0054 0B               54                     inc R3
+0055 EB               55                     mov A, R3
+A51 MACRO ASSEMBLER  SYMM_CHECK                                                           02/01/2021 14:24:22 PAGE     2
+
+0056 B560E5           56                     cjne A, 60H, inner_loop
+                      57             
+0059 0E               58             inc R6
+005A EA               59             mov A, R2
+005B 2560             60             add A, 60H
+005D FA               61             mov R2, A                       ; Add m to R2
+005E 0C               62             inc R4                          ; Add 1 to R4
+                      63             
+005F EE               64             mov A, R6
+0060 B560D1           65             cjne A, 60H, outer_loop         ; Loop till R6 becomes 4
+                      66     
+0063 80FE             67     loop : sjmp loop        
+                      68     
+0065                  69     break : 
+0065 C2D5             70             clr PSW.5                                       ; Clear PSW.5 since unequal numbers
+                              found
+0067 020063           71             ljmp loop
+                      72     end
+A51 MACRO ASSEMBLER  SYMM_CHECK                                                           02/01/2021 14:24:22 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+BREAK. . . . . . .  C ADDR   0065H   A   
+INNER_LOOP . . . .  C ADDR   003EH   A   
+LOOP . . . . . . .  C ADDR   0063H   A   
+OUTER_LOOP . . . .  C ADDR   0034H   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

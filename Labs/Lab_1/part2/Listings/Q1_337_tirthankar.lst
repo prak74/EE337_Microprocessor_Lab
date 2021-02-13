@@ -1,0 +1,39 @@
+A51 MACRO ASSEMBLER  Q1_337_TIRTHANKAR                                                    01/25/2021 12:12:35 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Q1_337_tirthankar.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE C:\Users\19176\Desktop\Q1_337_tirthankar.asm SET(SMALL) DEBUG PRINT(.\Listings\
+                      Q1_337_tirthankar.lst) OBJECT(.\Objects\Q1_337_tirthankar.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 00H
+0000 020103            2     LJMP begin
+0100                   3     org 100H
+0100 757005            4             mov 70H, #05H
+0103 E570              5             begin: MOV A, 70H
+0105 7F08              6     MOV R7, #08H
+0107 757100            7     MOV 71H, #00H
+010A 13                8     up: RRC A
+010B 5002              9     JNC L1
+010D 0571             10     INC 71H
+010F DFF9             11     L1: DJNZ R7, up
+                      12     end
+A51 MACRO ASSEMBLER  Q1_337_TIRTHANKAR                                                    01/25/2021 12:12:35 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BEGIN. . . . . . .  C ADDR   0103H   A   
+L1 . . . . . . . .  C ADDR   010FH   A   
+UP . . . . . . . .  C ADDR   010AH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,78 @@
+A51 MACRO ASSEMBLER  MAX_2                                                                01/25/2021 01:47:59 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\max_2.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE max_2.asm SET(SMALL) DEBUG PRINT(.\Listings\max_2.lst) OBJECT(.\Objects\max_2.o
+                      bj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 75400D            1     mov 040H,#00DH
+0003 75411E            2     mov 041H,#01EH
+0006 754265            3     mov 042H,#065H
+0009 754339            4     mov 043H,#039H
+000C 754409            5     mov 044H,#009H
+000F 754578            6     mov 045H,#078H                          ; Second Largest
+0012 754668            7     mov 046H,#068H
+0015 754739            8     mov 047H,#039H
+0018 754818            9     mov 048H,#018H
+001B 754916           10     mov 049H,#016H
+001E 754A13           11     mov 04AH,#013H
+0021 754B66           12     mov 04BH,#066H
+0024 754C7B           13     mov 04CH,#07BH                          ; Largest
+0027 754D12           14     mov 04DH,#012H
+002A 754E69           15     mov 04EH,#069H
+002D 754F20           16     mov 04FH,#020H
+0030 75503F           17     mov 050H,#03FH
+0033 75513B           18     mov 051H,#03BH
+0036 75521C           19     mov 052H,#01CH
+0039 755362           20     mov 053H,#062H
+                      21     
+003C 7940             22     mov R1,#040H                            ; Initialize address in R1
+003E 757000           23     mov 70H,#000H                           ; Initialize 70 and 71 for a new run
+0041 757100           24     mov 71H,#000H
+                      25     
+0044 E7               26     start : mov A,@R1
+0045 C3               27     clr C                                           ; Reset C before performing SUBB
+0046 9570             28     SUBB A,70H
+0048 500C             29     JNC max                                         ; if C is 0 => A > 70H => new largest
+                      30     
+004A E7               31     mov A,@R1                                       ; A was changed by SUBB, reset to @R1
+004B C3               32     clr C
+004C 9571             33     SUBB A,71H
+004E 500D             34     JNC second_max                          ; if C is 0 => A > 71H => new second_largest
+                      35     
+0050 09               36     loop : inc R1
+0051 B954F0           37     cjne R1,#054H,start                     ; Loop till R1 becomes 54H
+                      38     
+0054 80FE             39     here : sjmp here                        ; last execution line
+                      40     
+0056 857071           41     max : mov 71H,70H                       ; max will execute second_largest := largest, large
+                             st := current (A)
+0059 8770             42     mov 70H,@R1
+005B 80F3             43     sjmp loop
+                      44     
+005D 8771             45     second_max : mov 71H,@R1        ; second_max will execute second_largest := current (A)
+005F 80EF             46     sjmp loop
+                      47     
+                      48     end                                                     ; EOF
+A51 MACRO ASSEMBLER  MAX_2                                                                01/25/2021 01:47:59 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+HERE . . . . . . .  C ADDR   0054H   A   
+LOOP . . . . . . .  C ADDR   0050H   A   
+MAX. . . . . . . .  C ADDR   0056H   A   
+SECOND_MAX . . . .  C ADDR   005DH   A   
+START. . . . . . .  C ADDR   0044H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

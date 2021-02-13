@@ -1,0 +1,44 @@
+A51 MACRO ASSEMBLER  DECIMAL                                                              02/01/2021 14:07:25 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\decimal.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE decimal.asm SET(SMALL) DEBUG PRINT(.\Listings\decimal.lst) OBJECT(.\Objects\dec
+                      imal.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 755063            1     mov 50H, #063H
+0003 E550              2     mov A, 50H
+0005 75F064            3     mov B,#064H                             ; B = 100
+                       4     
+0008 84                5     div AB                                  ; given number/100 = digit at 100s location (in A) 
+                             + remainder (in B)
+0009 F552              6     mov 52H,A                               ; move 100s digit to 52H
+000B E5F0              7     mov A,B                                 
+000D 75F00A            8     mov B,#00AH
+0010 84                9     div AB                                  ; remainder/10 = digit at 10s location (in A) + rem
+                             ainder (in B)
+                      10     
+0011 C4               11     swap A                                  ; move the 10s digits from LSB to MSB
+0012 25F0             12     add A,B                                 ; place LSB from B into A
+0014 F553             13     mov 53H,A
+                      14     
+0016 80FE             15     here : sjmp here
+                      16     end
+A51 MACRO ASSEMBLER  DECIMAL                                                              02/01/2021 14:07:25 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+HERE . . . . . . .  C ADDR   0016H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

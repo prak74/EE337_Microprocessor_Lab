@@ -1,0 +1,51 @@
+A51 MACRO ASSEMBLER  Q1                                                                   02/06/2021 13:27:39 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\q1.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE q1.asm SET(SMALL) DEBUG PRINT(.\Listings\q1.lst) OBJECT(.\Objects\q1.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+0000 020100            2     ljmp start
+0100                   3     org 100h
+0100                   4     start:
+0100 7808              5     mov r0,#8
+0102 74B4              6     mov a,#0B4H
+0104 75F002            7     mov b,#02H
+0107 A4                8     mul AB
+0108                   9     rep:
+0108 33               10     rlc a
+0109 5001             11     jnc next
+010B C3               12     clr c
+010C                  13     next:
+010C D8FA             14     djnz r0,rep
+010E 6002             15     jz insert
+0110 8002             16     sjmp here
+0112                  17     insert:
+0112 2486             18     add a,#86H
+                      19     
+0114                  20     here:
+0114 80FE             21     sjmp here
+                      22     end
+A51 MACRO ASSEMBLER  Q1                                                                   02/06/2021 13:27:39 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+HERE . . . . . . .  C ADDR   0114H   A   
+INSERT . . . . . .  C ADDR   0112H   A   
+NEXT . . . . . . .  C ADDR   010CH   A   
+REP. . . . . . . .  C ADDR   0108H   A   
+START. . . . . . .  C ADDR   0100H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

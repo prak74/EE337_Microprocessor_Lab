@@ -1,0 +1,56 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    01/25/2021  16:40:00  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+E:\C51\BIN\BL51.EXE .\Objects\abs.obj TO .\Objects\test PRINT (.\Listings\test.m51) RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\abs.obj (ABS)
+
+
+LINK MAP OF MODULE:  .\Objects\test (ABS)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     001CH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\test (ABS)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ABS
+  D:00D0H         SYMBOL        PSW
+  C:0000H         LINE#         65533
+  C:0002H         LINE#         2
+  C:0004H         LINE#         3
+  C:0005H         LINE#         5
+  C:0007H         LINE#         6
+  C:0009H         LINE#         7
+  C:000BH         LINE#         8
+  C:000DH         LINE#         9
+  C:000FH         LINE#         11
+  C:0011H         LINE#         12
+  C:0013H         LINE#         13
+  C:0015H         LINE#         15
+  C:0016H         LINE#         16
+  C:0017H         LINE#         17
+  C:0018H         LINE#         19
+  C:001AH         LINE#         20
+  -------         ENDMOD        ABS
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 001CH BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=28
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

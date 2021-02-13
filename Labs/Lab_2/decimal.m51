@@ -1,0 +1,102 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    02/01/2021  14:24:22  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+E:\C51\BIN\BL51.EXE .\Objects\symm_check.obj TO .\Objects\decimal PRINT (.\Listings\decimal.m51) RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\symm_check.obj (SYMM_CHECK)
+
+
+LINK MAP OF MODULE:  .\Objects\decimal (SYMM_CHECK)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     006AH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\decimal (SYMM_CHECK)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        SYMM_CHECK
+  D:00F0H         SYMBOL        B
+  C:0065H         SYMBOL        BREAK
+  C:003EH         SYMBOL        INNER_LOOP
+  C:0063H         SYMBOL        LOOP
+  C:0034H         SYMBOL        OUTER_LOOP
+  D:00D0H         SYMBOL        PSW
+  C:0000H         LINE#         2
+  C:0003H         LINE#         3
+  C:0006H         LINE#         4
+  C:0009H         LINE#         5
+  C:000CH         LINE#         6
+  C:000FH         LINE#         7
+  C:0012H         LINE#         8
+  C:0015H         LINE#         9
+  C:0018H         LINE#         10
+  C:001BH         LINE#         11
+  C:001EH         LINE#         12
+  C:0021H         LINE#         13
+  C:0024H         LINE#         14
+  C:0027H         LINE#         15
+  C:002AH         LINE#         16
+  C:002DH         LINE#         17
+  C:0030H         LINE#         20
+  C:0032H         LINE#         22
+  C:0034H         LINE#         25
+  C:0035H         LINE#         26
+  C:0036H         LINE#         27
+  C:0037H         LINE#         28
+  C:0038H         LINE#         29
+  C:0039H         LINE#         30
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/01/2021  14:24:22  PAGE 2
+
+
+  C:003CH         LINE#         31
+  C:003DH         LINE#         32
+  C:003EH         LINE#         35
+  C:003FH         LINE#         36
+  C:0042H         LINE#         37
+  C:0043H         LINE#         38
+  C:0044H         LINE#         40
+  C:0046H         LINE#         41
+  C:0047H         LINE#         42
+  C:0048H         LINE#         43
+  C:0049H         LINE#         44
+  C:004BH         LINE#         46
+  C:004DH         LINE#         47
+  C:004EH         LINE#         48
+  C:004FH         LINE#         49
+  C:0050H         LINE#         50
+  C:0051H         LINE#         52
+  C:0054H         LINE#         54
+  C:0055H         LINE#         55
+  C:0056H         LINE#         56
+  C:0059H         LINE#         58
+  C:005AH         LINE#         59
+  C:005BH         LINE#         60
+  C:005DH         LINE#         61
+  C:005EH         LINE#         62
+  C:005FH         LINE#         64
+  C:0060H         LINE#         65
+  C:0063H         LINE#         67
+  C:0065H         LINE#         70
+  C:0067H         LINE#         71
+  -------         ENDMOD        SYMM_CHECK
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 006AH BYTE ( 5%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=106
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

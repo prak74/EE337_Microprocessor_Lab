@@ -1,0 +1,45 @@
+A51 MACRO ASSEMBLER  ABS                                                                  01/25/2021 16:40:00 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\abs.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE abs.a51 SET(SMALL) DEBUG PRINT(.\Listings\abs.lst) OBJECT(.\Objects\abs.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 C2D3              1     CLR PSW.3
+0002 C2D4              2     CLR PSW.4
+0004 D3                3     SETB C
+                       4     
+0005 7883              5     MOV R0, #83H
+0007 7994              6     MOV R1, #94H
+0009 7A4C              7     MOV R2, #4CH
+000B 7B20              8     MOV R3, #20H
+000D 7490              9     MOV A, #90H
+                      10     
+000F D2D3             11     SETB PSW.3
+0011 C002             12     PUSH 02H
+0013 C003             13     PUSH 03H
+                      14     
+0015 98               15     SUBB A, R0
+0016 29               16     ADD A, R1
+0017 F9               17     MOV R1, A
+                      18     
+0018 D002             19     POP 02H
+001A D003             20     POP 03H
+                      21     end
+A51 MACRO ASSEMBLER  ABS                                                                  01/25/2021 16:40:00 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+PSW. . . . . . . .  D ADDR   00D0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,84 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    02/12/2021  20:59:18  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+E:\C51\BIN\BL51.EXE .\Objects\blinkingLEDs.obj TO .\Objects\blinkingLEDs PRINT (.\Listings\blinkingLEDs.m51) RAMSIZE (25
+>> 6)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\blinkingLEDs.obj (BLINKINGLEDS)
+
+
+LINK MAP OF MODULE:  .\Objects\blinkingLEDs (BLINKINGLEDS)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     013CH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\blinkingLEDs (BLINKINGLEDS)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        BLINKINGLEDS
+  C:011DH         SYMBOL        BLINK
+  C:0100H         SYMBOL        BLINKINGLEDS
+  C:0128H         SYMBOL        DELAY_1S
+  C:0132H         SYMBOL        HERE
+  C:0117H         SYMBOL        ITERATE
+  C:012AH         SYMBOL        LOOP
+  D:0090H         SYMBOL        P1
+  B:0088H.5       SYMBOL        TF0
+  D:008CH         SYMBOL        TH0
+  D:008AH         SYMBOL        TL0
+  D:0089H         SYMBOL        TMOD
+  B:0088H.4       SYMBOL        TR0
+  C:0000H         LINE#         2
+  C:0100H         LINE#         6
+  C:0103H         LINE#         7
+  C:0106H         LINE#         14
+  C:0108H         LINE#         15
+  C:010AH         LINE#         16
+  C:010CH         LINE#         17
+  C:010EH         LINE#         18
+  C:0110H         LINE#         20
+  C:0112H         LINE#         21
+  C:0114H         LINE#         22
+  C:0115H         LINE#         24
+  C:0117H         LINE#         27
+  C:0119H         LINE#         28
+  C:011BH         LINE#         30
+  C:011DH         LINE#         34
+  C:0120H         LINE#         35
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/12/2021  20:59:18  PAGE 2
+
+
+  C:0122H         LINE#         36
+  C:0125H         LINE#         37
+  C:0127H         LINE#         38
+  C:0128H         LINE#         42
+  C:012AH         LINE#         44
+  C:012DH         LINE#         45
+  C:0130H         LINE#         46
+  C:0132H         LINE#         47
+  C:0135H         LINE#         48
+  C:0137H         LINE#         49
+  C:0139H         LINE#         50
+  C:013BH         LINE#         51
+  -------         ENDMOD        BLINKINGLEDS
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 003FH BYTE ( 3%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=316
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
