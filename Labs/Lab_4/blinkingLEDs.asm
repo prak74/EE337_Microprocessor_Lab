@@ -41,7 +41,7 @@ blink:
 delay_1s:
 	mov R4,#200
 		loop:
-		mov TH0, #0D8H
+		mov TH0, #0D8H			
 		mov TL0, #0FAH
 		setb TR0
 			here: jnb TF0,here

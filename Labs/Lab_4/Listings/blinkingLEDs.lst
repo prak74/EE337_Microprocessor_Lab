@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  BLINKINGLEDS                                                         02/12/2021 20:59:18 PAGE     1
+A51 MACRO ASSEMBLER  BLINKINGLEDS                                                         02/15/2021 14:27:01 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.2.7.0
@@ -41,7 +41,7 @@ LOC  OBJ            LINE     SOURCE
                       31     
                       32     
 011D                  33     blink:
-011D 759000           34         mov P1, #000H           ; set P1.7-P1.4 and stop input from P1.3-P1.0
+011D 759000           34         mov P1, #000H           ; reset P1.7-P1.4 and stop input from P1.3-P1.0
 0120 3128             35         acall delay_1s
 0122 7590F0           36         mov P1, #0F0H
 0125 3128             37         acall delay_1s
@@ -51,7 +51,7 @@ LOC  OBJ            LINE     SOURCE
 0128                  41     delay_1s:
 0128 7CC8             42             mov R4,#200
 012A                  43                     loop:
-012A 758CD8           44                     mov TH0, #0D8H
+012A 758CD8           44                     mov TH0, #0D8H                  
 012D 758AFA           45                     mov TL0, #0FAH
 0130 D28C             46                     setb TR0
 0132 308DFD           47                             here: jnb TF0,here
@@ -61,7 +61,7 @@ LOC  OBJ            LINE     SOURCE
 013B 22               51             ret
                       52     
                       53     end
-A51 MACRO ASSEMBLER  BLINKINGLEDS                                                         02/12/2021 20:59:18 PAGE     2
+A51 MACRO ASSEMBLER  BLINKINGLEDS                                                         02/15/2021 14:27:01 PAGE     2
 
 SYMBOL TABLE LISTING
 ------ ----- -------

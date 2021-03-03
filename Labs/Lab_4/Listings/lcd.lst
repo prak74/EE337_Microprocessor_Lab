@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  LCD                                                                  02/11/2021 23:03:13 PAGE     1
+A51 MACRO ASSEMBLER  LCD                                                                  02/15/2021 14:26:42 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.2.7.0
@@ -34,14 +34,14 @@ LOC  OBJ            LINE     SOURCE
 020C 5197             25               acall delay
 020E 5197             26               acall delay
 0210 5197             27               acall delay
-0212 7481             28               mov a,#81h             ;Put cursor on first row,5 column
+0212 7481             28               mov a,#81h             ;Put cursor on first row,1 column
 0214 5169             29               acall lcd_command      ;send command to LCD
 0216 5197             30               acall delay
 0218 900300           31               mov   dptr,#my_string1   ;Load DPTR with sring1 Addr
 021B 5189             32               acall lcd_sendstring     ;call text strings sending routine
 021D 5197             33               acall delay
                       34     
-021F 74C4             35               mov a,#0C4h             ;Put cursor on second row,3 column
+021F 74C4             35               mov a,#0C4h             ;Put cursor on second row,4 column
 0221 5169             36               acall lcd_command
 0223 5197             37               acall delay
 0225 90030E           38               mov   dptr,#my_string2
@@ -65,7 +65,7 @@ LOC  OBJ            LINE     SOURCE
 0240 C281             55              clr   LCD_rw         ;We are writing in instruction register
 0242 D282             56              setb  LCD_en         ;Enable H->L
 0244 5197             57                      acall delay
-A51 MACRO ASSEMBLER  LCD                                                                  02/11/2021 23:03:13 PAGE     2
+A51 MACRO ASSEMBLER  LCD                                                                  02/15/2021 14:26:42 PAGE     2
 
 0246 C282             58              clr   LCD_en
                       59              
@@ -133,7 +133,7 @@ LOC  OBJ            LINE     SOURCE
 029B 7801            120              mov r0,#1
 029D 79FF            121     loop2:   mov r1,#255
 029F D9FE            122              loop1:  djnz r1, loop1
-A51 MACRO ASSEMBLER  LCD                                                                  02/11/2021 23:03:13 PAGE     3
+A51 MACRO ASSEMBLER  LCD                                                                  02/15/2021 14:26:42 PAGE     3
 
 02A1 D8FA            123              djnz r0, loop2
 02A3 D001            124              pop 1
@@ -153,7 +153,7 @@ LOC  OBJ            LINE     SOURCE
 0312 68617200                
                      134     end
                              
-A51 MACRO ASSEMBLER  LCD                                                                  02/11/2021 23:03:13 PAGE     4
+A51 MACRO ASSEMBLER  LCD                                                                  02/15/2021 14:26:42 PAGE     4
 
 SYMBOL TABLE LISTING
 ------ ----- -------

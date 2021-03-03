@@ -25,14 +25,14 @@ start:
 	  acall delay
 	  acall delay
 	  acall delay
-	  mov a,#81h		 ;Put cursor on first row,5 column
+	  mov a,#81h		 ;Put cursor on first row,1 column
 	  acall lcd_command	 ;send command to LCD
 	  acall delay
 	  mov   dptr,#my_string1   ;Load DPTR with sring1 Addr
 	  acall lcd_sendstring	   ;call text strings sending routine
 	  acall delay
 
-	  mov a,#0C4h		  ;Put cursor on second row,3 column
+	  mov a,#0C4h		  ;Put cursor on second row,4 column
 	  acall lcd_command
 	  acall delay
 	  mov   dptr,#my_string2

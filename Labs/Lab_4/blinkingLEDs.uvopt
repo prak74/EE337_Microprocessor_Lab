@@ -209,8 +209,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\blinkingLEDs.asm</PathWithFileName>
-      <FilenameWithoutPath>blinkingLEDs.asm</FilenameWithoutPath>
+      <PathWithFileName>.\lcd.asm</PathWithFileName>
+      <FilenameWithoutPath>lcd.asm</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

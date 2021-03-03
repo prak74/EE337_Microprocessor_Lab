@@ -377,9 +377,9 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>blinkingLEDs.asm</FileName>
+              <FileName>lcd.asm</FileName>
               <FileType>2</FileType>
-              <FilePath>.\blinkingLEDs.asm</FilePath>
+              <FilePath>.\lcd.asm</FilePath>
             </File>
           </Files>
         </Group>
