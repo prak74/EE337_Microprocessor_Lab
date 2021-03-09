@@ -1,0 +1,3 @@
+".\Objects\pwm.obj" 
+TO ".\Objects\timers" 
+PRINT(".\Listings\timers.m51") RAMSIZE(256) 

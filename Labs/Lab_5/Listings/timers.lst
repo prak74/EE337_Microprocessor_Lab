@@ -1,0 +1,78 @@
+A51 MACRO ASSEMBLER  TIMERS                                                               03/06/2021 21:35:33 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\timers.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE timers.asm SET(SMALL) DEBUG PRINT(.\Listings\timers.lst) OBJECT(.\Objects\timer
+                      s.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000H
+0000 020100            2     ljmp init
+                       3     
+0100                   4     org 0100H
+0100                   5     init:
+                       6         ; Initialize Timer 0
+0100 758901            7         mov TMOD, #001H             ; set timer0 mode to mode 01 to use 16-bit count
+                       8     
+0103                   9     start:
+                      10         ;mov 50H, #0C3H             ; upper byte of 16-bit delay
+                      11             ;mov 51H, #050H                 ; lower byte of 16-bit delay
+0103                  12             led:
+0103 7590F0           13                     mov P1, #0F0H 
+0106 310F             14                     acall delay_1s
+0108 759000           15                     mov P1, #000H
+010B 310F             16                     acall delay_1s
+010D 80F4             17                     sjmp led
+                      18                     
+010F                  19     delay_1s:
+010F 7550C3           20         mov 50H, #0C3H              ; upper byte of 16-bit delay
+0112 755145           21             mov 51H, #045H                  ; lower byte of 16-bit delay
+                      22             ; if we count 50,000 in delay, calling the delay 40 times will give us a 1s delay 
+0115 7828             23             mov R0,#028H                    ; R0 = 40
+0117                  24             loop :
+0117 311C             25                     acall delay
+0119 D8FC             26                     djnz R0, loop
+011B 22               27             ret
+                      28     
+011C                  29     delay:
+011C C3               30             clr C                           ; set C to 0 for subtraction
+011D 7400             31             mov A, #000H
+011F 9551             32         subb A, 51H             ; subtract lower byte first
+0121 F58A             33         mov TL0, A              ; Move lower byte of subtraction to TL0
+0123 7400             34             mov A, #000H
+0125 9550             35         subb A, 50H             ; subtract upper byte , also subtract carry
+0127 F58C             36             mov TH0, A                              ; Move upper byte of subtraction to TH0
+0129 D28C             37         setb TR0                ; start timer
+012B 308DFD           38         here : jnb TF0,here     ; loop till TF0 flag is set
+012E C28D             39         clr TF0                 ; clear TF0 for next use
+0130 22               40         ret                     ; return to function call
+                      41     end
+A51 MACRO ASSEMBLER  TIMERS                                                               03/06/2021 21:35:33 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   011CH   A   
+DELAY_1S . . . . .  C ADDR   010FH   A   
+HERE . . . . . . .  C ADDR   012BH   A   
+INIT . . . . . . .  C ADDR   0100H   A   
+LED. . . . . . . .  C ADDR   0103H   A   
+LOOP . . . . . . .  C ADDR   0117H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+START. . . . . . .  C ADDR   0103H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
