@@ -1,0 +1,87 @@
+A51 MACRO ASSEMBLER  MUSIC                                                                03/15/2021 14:18:19 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\music.obj
+ASSEMBLER INVOKED BY: E:\C51\BIN\A51.EXE music.asm SET(SMALL) DEBUG PRINT(.\Listings\music.lst) OBJECT(.\Objects\music.o
+                      bj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000H
+0000 020100            2     ljmp init
+                       3     
+000B                   4     org 000BH
+000B B280              5     cpl P0.0
+000D 888C              6     mov TH0, R0
+000F 898A              7     mov TL0, R1
+0011 32                8     reti
+                       9     
+                      10     
+0100                  11     org 0100H
+0100                  12     init:
+                      13             ; Enable Interrupts
+0100 D2AF             14             setb EA
+0102 D2A9             15             setb ET0
+                      16             
+                      17             ; Initialize Timers
+0104 758911           18         mov TMOD, #011H             ; T0 in 16-bit, T1 in 16-bit count
+                      19     
+                      20     
+0107                  21     main:
+0107 758CF1           22         mov TH0, #0F1H
+010A 758A87           23         mov TL0, #087H
+010D 78F1             24             mov R0, #0F1H
+010F 7987             25         mov R1, #087H
+0111 D28C             26         setb TR0
+0113 3128             27         acall delay_2s
+0115 C28C             28         clr TR0
+0117 758CF2           29         mov TH0, #0F2H
+011A 758AFB           30         mov TL0, #0FBH
+011D 78F2             31             mov R0, #0F2H
+011F 79FB             32         mov R1, #0FBH
+0121 D28C             33         setb TR0
+0123 3128             34         acall delay_2s
+0125 020107           35         ljmp main
+                      36         
+0128                  37     delay_2s:
+0128 7A50             38         mov R2, #80
+012A                  39         loop:
+012A 758D3C           40                     mov TH1, #03CH
+012D 758BA5           41                     mov TL1, #0A5H
+0130 D28E             42             setb TR1
+0132 308FFD           43             here : jnb TF1, here
+0135 C28F             44             clr TF1
+0137 DAF1             45             djnz R2, loop
+0139 22               46         ret
+                      47     end
+A51 MACRO ASSEMBLER  MUSIC                                                                03/15/2021 14:18:19 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY_2S . . . . .  C ADDR   0128H   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+ET0. . . . . . . .  B ADDR   00A8H.1 A   
+HERE . . . . . . .  C ADDR   0132H   A   
+INIT . . . . . . .  C ADDR   0100H   A   
+LOOP . . . . . . .  C ADDR   012AH   A   
+MAIN . . . . . . .  C ADDR   0107H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+TF1. . . . . . . .  B ADDR   0088H.7 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
