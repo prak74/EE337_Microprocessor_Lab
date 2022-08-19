@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj" 
+TO ".\Objects\obstacle" 
+PRINT(".\Listings\obstacle.m51") RAMSIZE(256) 
